@@ -1,0 +1,143 @@
+---
+const nav = [
+  { label: 'Qué es',         href: '#que-es' },
+  { label: 'Cómo funciona',  href: '#como-funciona' },
+  { label: 'Beneficios',     href: '#beneficios' },
+];
+---
+
+<header
+  id="site-header"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+  style="border-bottom: 1px solid transparent;"
+>
+  <div class="wrap">
+    <nav class="flex items-center justify-between h-16">
+
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2 group" aria-label="MetaDigitales inicio">
+        <div
+          class="w-8 h-8 rounded-md flex items-center justify-center text-sm font-bold"
+          style="
+            background: linear-gradient(135deg, rgba(0,229,255,0.15), rgba(139,92,246,0.15));
+            border: 1px solid rgba(0,229,255,0.3);
+            color: #00e5ff;
+            font-family: var(--font-mono);
+          "
+        >M</div>
+        <span style="font-family: var(--font-display); font-weight: 700; font-size: 1.0625rem;">
+          <span style="color: #00e5ff;">Meta</span><span style="color: #e4e4f0;">Digitales</span>
+        </span>
+      </a>
+
+      <!-- Desktop nav -->
+      <ul class="hidden md:flex items-center gap-8" role="list">
+        {nav.map(link => (
+          <li>
+            <a
+              href={link.href}
+              style="
+                font-family: var(--font-body);
+                font-size: 0.875rem;
+                font-weight: 500;
+                color: var(--color-muted);
+                transition: color 0.2s ease;
+                letter-spacing: 0.01em;
+              "
+              onmouseover="this.style.color='#e4e4f0'"
+              onmouseout="this.style.color='var(--color-muted)'"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <!-- CTA desktop -->
+      <a href="https://comunidad.metadigitales.com" class="btn-primary hidden md:inline-flex" style="padding: 0.625rem 1.375rem; font-size: 0.875rem;" target="_blank" rel="noopener">
+        Unirme
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+
+      <!-- Mobile menu button -->
+      <button
+        id="menu-btn"
+        class="md:hidden flex flex-col justify-center gap-1.5 w-10 h-10 rounded"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        style="color: #e4e4f0;"
+      >
+        <span class="block w-6 h-px bg-current transition-all duration-300" id="bar1"></span>
+        <span class="block w-6 h-px bg-current transition-all duration-300" id="bar2"></span>
+        <span class="block w-4 h-px bg-current transition-all duration-300" id="bar3"></span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden"
+    style="background: rgba(6, 6, 15, 0.98); backdrop-filter: blur(16px); border-top: 1px solid rgba(0,229,255,0.1);"
+  >
+    <div class="wrap py-6 flex flex-col gap-5">
+      {nav.map(link => (
+        <a
+          href={link.href}
+          class="mobile-nav-link"
+          style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: #e4e4f0;"
+        >
+          {link.label}
+        </a>
+      ))}
+      <a href="https://comunidad.metadigitales.com" class="btn-primary mt-2" target="_blank" rel="noopener">
+        Unirme a MetaDigitales →
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- Spacer under fixed header -->
+<div class="h-16" aria-hidden="true"></div>
+
+<script>
+  const header = document.getElementById('site-header') as HTMLElement;
+  const menuBtn = document.getElementById('menu-btn') as HTMLButtonElement;
+  const mobileMenu = document.getElementById('mobile-menu') as HTMLElement;
+  const bar3 = document.getElementById('bar3') as HTMLElement;
+
+  // Scroll: add background on scroll
+  function updateHeader() {
+    const scrolled = window.scrollY > 30;
+    header.style.backgroundColor = scrolled
+      ? 'rgba(6, 6, 15, 0.95)'
+      : 'transparent';
+    header.style.backdropFilter = scrolled ? 'blur(16px)' : 'none';
+    header.style.borderBottomColor = scrolled
+      ? 'rgba(0, 229, 255, 0.08)'
+      : 'transparent';
+  }
+  window.addEventListener('scroll', updateHeader, { passive: true });
+  updateHeader();
+
+  // Mobile menu toggle
+  let isOpen = false;
+  menuBtn.addEventListener('click', () => {
+    isOpen = !isOpen;
+    mobileMenu.classList.toggle('hidden', !isOpen);
+    menuBtn.setAttribute('aria-expanded', String(isOpen));
+    bar3.style.width = isOpen ? '24px' : '16px';
+  });
+
+  // Close mobile menu on link click
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      isOpen = false;
+      mobileMenu.classList.add('hidden');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      bar3.style.width = '16px';
+    });
+  });
+</script>

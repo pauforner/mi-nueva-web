@@ -1,0 +1,175 @@
+---
+const steps = [
+  {
+    num: '01',
+    color: '#00e5ff',
+    title: 'Trae tu idea',
+    body: 'Tienes una idea? Compártela con la comunidad. Usamos IA para validarla, analizarla y construir el plan de negocio en horas.',
+    tags: ['Validación', 'Análisis IA', 'Plan'],
+  },
+  {
+    num: '02',
+    color: '#8b5cf6',
+    title: 'Automatiza con IA',
+    body: 'Con nuestros templates y flujos listos para n8n, Make y GPT, automatizas marketing, ventas, soporte y operaciones — sin código.',
+    tags: ['n8n', 'GPT', 'Automatización'],
+  },
+  {
+    num: '03',
+    color: '#00ffa3',
+    title: 'Tu negocio escala',
+    body: 'Con los procesos corriendo solos, te enfocas en crecer. Tu negocio trabaja 24/7 mientras construyes el siguiente.',
+    tags: ['Revenue', '24/7', 'Escala'],
+  },
+];
+---
+
+<section
+  id="como-funciona"
+  class="section-pad"
+  style="background-color: var(--color-void); position: relative; overflow: hidden;"
+>
+  <!-- Background dot grid -->
+  <div
+    aria-hidden="true"
+    class="bg-dot-grid fade-edges"
+    style="position: absolute; inset: 0; pointer-events: none;"
+  ></div>
+
+  <div class="wrap relative z-10">
+
+    <!-- Section header -->
+    <div style="margin-bottom: clamp(3rem, 5vw, 4.5rem);">
+      <p class="section-label">Proceso</p>
+      <h2 style="
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: clamp(2rem, 4vw, 3rem);
+        letter-spacing: -0.03em;
+        color: var(--color-ink);
+        max-width: 520px;
+      ">
+        Tres pasos para tu
+        <span class="text-gradient"> negocio digital</span>
+      </h2>
+    </div>
+
+    <!-- Steps layout -->
+    <div style="display: flex; flex-direction: column; gap: 0;">
+
+      {steps.map((step, i) => (
+        <div
+          style={`
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 0 2rem;
+            padding-bottom: ${i < steps.length - 1 ? '0' : '0'};
+            position: relative;
+          `}
+        >
+          <!-- Vertical connector line -->
+          {i < steps.length - 1 && (
+            <div
+              aria-hidden="true"
+              style={`
+                position: absolute;
+                left: 39px;
+                top: 80px;
+                bottom: 0;
+                width: 1px;
+                background: linear-gradient(to bottom, ${step.color}60, ${steps[i+1]!.color}30);
+              `}
+            ></div>
+          )}
+
+          <!-- Number column -->
+          <div style="display: flex; flex-direction: column; align-items: center; padding-top: 1.5rem;">
+            <div style={`
+              width: 56px; height: 56px;
+              border-radius: 50%;
+              background: ${step.color}12;
+              border: 1.5px solid ${step.color}40;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-family: var(--font-mono);
+              font-weight: 600;
+              font-size: 0.875rem;
+              color: ${step.color};
+              flex-shrink: 0;
+              box-shadow: 0 0 20px ${step.color}20;
+            `}>
+              {step.num}
+            </div>
+          </div>
+
+          <!-- Content column -->
+          <div style="padding: 1.5rem 0 3.5rem;">
+            <h3 style={`
+              font-family: var(--font-display);
+              font-weight: 700;
+              font-size: 1.375rem;
+              letter-spacing: -0.02em;
+              color: var(--color-ink);
+              margin-bottom: 0.75rem;
+            `}>
+              <span style={`color: ${step.color};`}>{step.title}</span>
+            </h3>
+
+            <p style="font-size: 1rem; color: var(--color-muted); line-height: 1.65; max-width: 540px; margin-bottom: 1.25rem;">
+              {step.body}
+            </p>
+
+            <!-- Tags -->
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+              {step.tags.map(tag => (
+                <span style={`
+                  font-family: var(--font-mono);
+                  font-size: 0.6875rem;
+                  letter-spacing: 0.06em;
+                  padding: 0.3rem 0.75rem;
+                  border: 1px solid ${step.color}30;
+                  border-radius: 100px;
+                  color: ${step.color};
+                  background: ${step.color}08;
+                `}>
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+
+    </div>
+
+    <!-- Bottom CTA nudge -->
+    <div
+      style="
+        margin-top: 1rem;
+        padding: 1.75rem 2rem;
+        border: 1px solid rgba(0, 229, 255, 0.12);
+        border-radius: 12px;
+        background: rgba(0, 229, 255, 0.04);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1rem;
+      "
+    >
+      <div>
+        <p style="font-family: var(--font-display); font-weight: 700; font-size: 1.0625rem; color: var(--color-ink); margin-bottom: 0.25rem;">
+          ¿Listo para empezar?
+        </p>
+        <p style="font-size: 0.875rem; color: var(--color-muted);">
+          Únete y accede al proceso completo con la comunidad.
+        </p>
+      </div>
+      <a href="#unete" class="btn-primary" style="flex-shrink:0;">
+        Ver cómo unirme →
+      </a>
+    </div>
+
+  </div>
+</section>

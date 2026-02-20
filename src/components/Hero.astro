@@ -1,0 +1,277 @@
+---
+// Hero — fullscreen landing with terminal visual
+---
+
+<section
+  class="relative min-h-[calc(100vh-4rem)] flex items-center overflow-hidden"
+  style="background-color: var(--color-void);"
+  aria-labelledby="hero-headline"
+>
+
+  <!-- Scan line on load -->
+  <div
+    aria-hidden="true"
+    style="
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, #00e5ff 30%, #8b5cf6 70%, transparent 100%);
+      box-shadow: 0 0 12px #00e5ff, 0 0 24px rgba(0,229,255,0.4);
+      z-index: 9999;
+      pointer-events: none;
+      animation: scan-down 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+    "
+  ></div>
+
+  <!-- Dot grid background -->
+  <div
+    class="bg-dot-grid fade-edges"
+    aria-hidden="true"
+    style="position: absolute; inset: 0; pointer-events: none;"
+  ></div>
+
+  <!-- Ambient glow blobs -->
+  <div aria-hidden="true" style="position:absolute;top:20%;left:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(139,92,246,0.12) 0%,transparent 70%);pointer-events:none;"></div>
+  <div aria-hidden="true" style="position:absolute;bottom:10%;right:-5%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,229,255,0.1) 0%,transparent 70%);pointer-events:none;"></div>
+
+  <!-- Main content -->
+  <div class="wrap relative z-10 w-full" style="padding-block: clamp(3rem, 8vw, 6rem);">
+    <div class="grid lg:grid-cols-[1fr_420px] gap-12 xl:gap-20 items-center">
+
+      <!-- ── Left: text column ── -->
+      <div>
+
+        <!-- Eyebrow -->
+        <div
+          class="animate-fade-up"
+          style="
+            display: inline-flex;
+            align-items: center;
+            gap: 0.625rem;
+            margin-bottom: 1.75rem;
+            padding: 0.375rem 0.875rem 0.375rem 0.625rem;
+            border: 1px solid rgba(0, 229, 255, 0.25);
+            border-radius: 100px;
+            background: rgba(0, 229, 255, 0.06);
+          "
+        >
+          <span
+            style="
+              width: 7px; height: 7px;
+              border-radius: 50%;
+              background: #00ffa3;
+              box-shadow: 0 0 8px #00ffa3;
+              animation: pulse-glow 2s ease-in-out infinite;
+              flex-shrink: 0;
+            "
+          ></span>
+          <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-cyan); letter-spacing: 0.08em;">
+            Comunidad activa &middot; Resultados reales
+          </span>
+        </div>
+
+        <!-- Headline -->
+        <h1
+          id="hero-headline"
+          class="animate-fade-up delay-100"
+          style="
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: clamp(2.75rem, 6vw, 5rem);
+            line-height: 1.02;
+            letter-spacing: -0.04em;
+            color: var(--color-ink);
+            margin-bottom: 1.5rem;
+          "
+        >
+          Convierte ideas<br />
+          en negocios<br />
+          <span class="text-gradient" style="display: inline-block; padding-bottom: 0.1em;">
+            que trabajan solos.
+          </span>
+        </h1>
+
+        <!-- Subheadline -->
+        <p
+          class="animate-fade-up delay-200"
+          style="
+            font-size: clamp(1rem, 1.5vw, 1.1875rem);
+            color: #a8a8c8;
+            max-width: 520px;
+            line-height: 1.65;
+            margin-bottom: 2.25rem;
+          "
+        >
+          MetaDigitales es la comunidad donde emprendedores construyen
+          negocios digitales automatizados usando IA como co-fundador.
+          Sin código. Sin límites. 24/7.
+        </p>
+
+        <!-- CTA buttons -->
+        <div class="animate-fade-up delay-300 flex flex-wrap gap-3" style="margin-bottom: 3rem;">
+          <a
+            href="https://comunidad.metadigitales.com"
+            class="btn-primary animate-pulse-glow"
+            target="_blank"
+            rel="noopener"
+          >
+            Unirme ahora
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="#como-funciona" class="btn-ghost">
+            Ver cómo funciona
+          </a>
+        </div>
+
+        <!-- Social proof -->
+        <div
+          class="animate-fade-up delay-400 flex items-center gap-4 flex-wrap"
+          style="font-size: 0.875rem;"
+        >
+          <!-- Avatar stack -->
+          <div style="display: flex; gap: -0.5rem;">
+            {[
+              ['#00e5ff', '#8b5cf6'],
+              ['#8b5cf6', '#00ffa3'],
+              ['#00ffa3', '#00e5ff'],
+              ['#e4e4f0', '#8b5cf6'],
+            ].map(([from, to], i) => (
+              <div
+                style={`
+                  width: 32px; height: 32px;
+                  border-radius: 50%;
+                  background: linear-gradient(135deg, ${from}, ${to});
+                  border: 2px solid #06060f;
+                  margin-left: ${i > 0 ? '-8px' : '0'};
+                  flex-shrink: 0;
+                `}
+              ></div>
+            ))}
+          </div>
+          <span style="color: var(--color-muted);">
+            <strong style="color: var(--color-ink); font-weight: 700;">+500</strong> miembros activos
+          </span>
+          <span style="display:flex;align-items:center;gap:0.375rem;color:#00ffa3;font-family:var(--font-mono);font-size:0.75rem;">
+            <span style="width:6px;height:6px;border-radius:50%;background:currentColor;"></span>
+            En crecimiento
+          </span>
+        </div>
+      </div>
+
+      <!-- ── Right: terminal card ── -->
+      <div
+        class="animate-fade-up delay-300 hidden lg:block"
+        style="
+          background: rgba(11, 11, 26, 0.8);
+          border: 1px solid rgba(0, 229, 255, 0.15);
+          border-radius: 14px;
+          overflow: hidden;
+          box-shadow: 0 0 60px rgba(0, 229, 255, 0.08), 0 24px 48px rgba(0,0,0,0.4);
+        "
+      >
+        <!-- Terminal top bar -->
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.25rem;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            background: rgba(255,255,255,0.03);
+          "
+        >
+          <span style="width:11px;height:11px;border-radius:50%;background:#ff5f57;"></span>
+          <span style="width:11px;height:11px;border-radius:50%;background:#febc2e;"></span>
+          <span style="width:11px;height:11px;border-radius:50%;background:#00ffa3;"></span>
+          <span style="margin-left:0.625rem;font-family:var(--font-mono);font-size:0.75rem;color:var(--color-muted);">
+            metadigitales.sh — bash
+          </span>
+        </div>
+
+        <!-- Terminal content -->
+        <div style="padding: 1.5rem; font-family: var(--font-mono); font-size: 0.8125rem; line-height: 1.8;">
+
+          <div class="animate-fade-in delay-800" style="opacity:0;">
+            <span style="color:#8b5cf6;">$</span>
+            <span style="color:#e4e4f0;"> idea validate </span>
+            <span style="color:#00ffa3;">"SaaS de gestión IA"</span>
+          </div>
+
+          <div class="animate-fade-in delay-1000" style="opacity:0;color:#00ffa3;">
+            ✓ Potencial detectado: ALTO<br/>
+            ✓ Competencia analizada: 12 apps<br/>
+            ✓ Audiencia: 2.4M negocios
+          </div>
+
+          <div class="animate-fade-in delay-1200" style="opacity:0;margin-top:0.75rem;">
+            <span style="color:#8b5cf6;">$</span>
+            <span style="color:#e4e4f0;"> automate --stack n8n,GPT</span>
+          </div>
+
+          <div class="animate-fade-in delay-1400" style="opacity:0;color:#00ffa3;">
+            ✓ Flujos creados: 24<br/>
+            ✓ Marketing: automatizado<br/>
+            ✓ Soporte 24/7: activo
+          </div>
+
+          <div class="animate-fade-in delay-1600" style="opacity:0;margin-top:0.75rem;">
+            <span style="color:#8b5cf6;">$</span>
+            <span style="color:#e4e4f0;"> launch --deploy vercel</span>
+          </div>
+
+          <div class="animate-fade-in delay-1800" style="opacity:0;color:#00ffa3;">
+            ✓ Landing page: online<br/>
+            ✓ Funnel de ventas: activo
+          </div>
+
+          <div class="animate-fade-in delay-2000" style="opacity:0;margin-top:0.75rem;">
+            <span style="color:#8b5cf6;">$</span>
+            <span style="color:#e4e4f0;"> negocio.lanzado en: </span>
+            <span style="color:#00e5ff;font-weight:600;">48h</span>
+          </div>
+
+          <!-- Blinking cursor -->
+          <div class="animate-fade-in delay-2200" style="opacity:0;margin-top:0.5rem;color:#5a5a7a;">
+            <span style="color:#8b5cf6;">$</span>
+            <span style="color:#00e5ff;" class="animate-blink"> █</span>
+          </div>
+        </div>
+
+        <!-- Bottom status bar -->
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            padding: 0.75rem 1.25rem;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            background: rgba(0,229,255,0.04);
+          "
+        >
+          <span style="display:flex;align-items:center;gap:0.375rem;font-family:var(--font-mono);font-size:0.6875rem;color:#00ffa3;">
+            <span style="width:6px;height:6px;border-radius:50%;background:currentColor;animation:pulse-glow 2s ease-in-out infinite;"></span>
+            Sistema activo
+          </span>
+          <span style="font-family:var(--font-mono);font-size:0.6875rem;color:var(--color-muted);">
+            uptime: 99.9% &nbsp;·&nbsp; procesos: 1,247
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom gradient fade -->
+  <div
+    aria-hidden="true"
+    style="
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 120px;
+      background: linear-gradient(to bottom, transparent, var(--color-void));
+      pointer-events: none;
+    "
+  ></div>
+</section>

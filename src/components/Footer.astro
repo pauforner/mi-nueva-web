@@ -1,0 +1,137 @@
+---
+const year = new Date().getFullYear();
+
+const links = {
+  comunidad: [
+    { label: 'Qué es MetaDigitales', href: '#que-es' },
+    { label: 'Cómo funciona',        href: '#como-funciona' },
+    { label: 'Beneficios',           href: '#beneficios' },
+    { label: 'Unirme',               href: 'https://comunidad.metadigitales.com' },
+  ],
+  legal: [
+    { label: 'Política de privacidad', href: '/privacidad' },
+    { label: 'Términos y condiciones', href: '/terminos' },
+  ],
+};
+---
+
+<footer
+  style="
+    background-color: var(--color-surface);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 3.5rem;
+    padding-bottom: 2rem;
+  "
+>
+  <div class="wrap">
+
+    <!-- Top grid -->
+    <div
+      style="
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        margin-bottom: 3rem;
+      "
+      class="sm:grid-cols-3"
+    >
+
+      <!-- Brand -->
+      <div style="grid-column: 1;">
+        <a href="/" style="display:inline-flex;align-items:center;gap:0.625rem;margin-bottom:1rem;" aria-label="MetaDigitales">
+          <div
+            style="
+              width: 32px; height: 32px;
+              border-radius: 7px;
+              background: linear-gradient(135deg, rgba(0,229,255,0.15), rgba(139,92,246,0.15));
+              border: 1px solid rgba(0,229,255,0.25);
+              display: flex; align-items: center; justify-content: center;
+              font-family: var(--font-mono);
+              font-weight: 600;
+              font-size: 0.875rem;
+              color: #00e5ff;
+            "
+          >M</div>
+          <span style="font-family:var(--font-display);font-weight:700;font-size:1rem;">
+            <span style="color:#00e5ff;">Meta</span><span style="color:#e4e4f0;">Digitales</span>
+          </span>
+        </a>
+        <p style="font-size:0.875rem;color:var(--color-muted);line-height:1.65;max-width:260px;">
+          Comunidad donde transformamos ideas en negocios digitales
+          automatizados con inteligencia artificial.
+        </p>
+      </div>
+
+      <!-- Comunidad links -->
+      <div>
+        <h4 style="font-family:var(--font-mono);font-size:0.6875rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-muted);margin-bottom:1.25rem;">
+          Comunidad
+        </h4>
+        <ul style="display:flex;flex-direction:column;gap:0.75rem;list-style:none;">
+          {links.comunidad.map(link => (
+            <li>
+              <a
+                href={link.href}
+                style="font-size:0.9375rem;color:var(--color-muted);transition:color 0.2s ease;"
+                onmouseover="this.style.color='#e4e4f0'"
+                onmouseout="this.style.color='var(--color-muted)'"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Legal links -->
+      <div>
+        <h4 style="font-family:var(--font-mono);font-size:0.6875rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-muted);margin-bottom:1.25rem;">
+          Legal
+        </h4>
+        <ul style="display:flex;flex-direction:column;gap:0.75rem;list-style:none;">
+          {links.legal.map(link => (
+            <li>
+              <a
+                href={link.href}
+                style="font-size:0.9375rem;color:var(--color-muted);transition:color 0.2s ease;"
+                onmouseover="this.style.color='#e4e4f0'"
+                onmouseout="this.style.color='var(--color-muted)'"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding-top: 1.75rem;
+        border-top: 1px solid rgba(255,255,255,0.05);
+      "
+    >
+      <p style="font-size:0.8125rem;color:var(--color-muted);font-family:var(--font-mono);">
+        © {year} MetaDigitales. Todos los derechos reservados.
+      </p>
+      <p style="font-size:0.8125rem;color:var(--color-muted);font-family:var(--font-mono);">
+        Hecho con IA &nbsp;·&nbsp; Construido para escalar
+      </p>
+    </div>
+
+  </div>
+</footer>
+
+<style>
+  @media (min-width: 640px) {
+    footer .sm\:grid-cols-3 {
+      grid-template-columns: 1.4fr 1fr 1fr;
+    }
+  }
+</style>

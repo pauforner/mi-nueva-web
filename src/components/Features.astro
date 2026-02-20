@@ -1,0 +1,162 @@
+---
+const features = [
+  {
+    n: '01',
+    title: 'Herramientas IA curadas',
+    body: 'Acceso a más de 50 herramientas de inteligencia artificial probadas y curadas por la comunidad. Sin perder tiempo en buscar qué funciona.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M17.5 17.5m-2.5 0a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0-5 0"/></svg>`,
+    accent: '#00e5ff',
+    span: 2,
+  },
+  {
+    n: '02',
+    title: 'Templates listos',
+    body: 'Flujos de n8n, Make y Zapier listos para copiar, personalizar y lanzar. De marketing a ventas a soporte — todo automatizado.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,
+    accent: '#8b5cf6',
+    span: 1,
+  },
+  {
+    n: '03',
+    title: 'Comunidad privada',
+    body: 'Discord exclusivo con más de 500 emprendedores digitales. Comparte avances, pide feedback y construye junto a otros builders.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+    accent: '#00ffa3',
+    span: 1,
+  },
+  {
+    n: '04',
+    title: 'Mentoring grupal',
+    body: 'Sesiones semanales en vivo con fundadores que ya construyeron negocios digitales rentables. Aprende de quienes ya lo lograron.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>`,
+    accent: '#8b5cf6',
+    span: 1,
+  },
+  {
+    n: '05',
+    title: 'Biblioteca de recursos',
+    body: 'Cursos, guías, frameworks y playbooks actualizados constantemente. Todo lo que necesitas en un solo lugar.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>`,
+    accent: '#00e5ff',
+    span: 1,
+  },
+  {
+    n: '06',
+    title: 'Casos de éxito reales',
+    body: 'Más de 100 negocios lanzados por miembros de la comunidad. Estudia los casos, replica las estrategias, evita los errores que otros ya cometieron.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg>`,
+    accent: '#00ffa3',
+    span: 2,
+  },
+];
+---
+
+<section
+  id="beneficios"
+  class="section-pad"
+  style="background-color: var(--color-surface); position: relative; overflow: hidden;"
+>
+  <!-- Divider -->
+  <div
+    aria-hidden="true"
+    style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:50%;height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,0.4),transparent);"
+  ></div>
+
+  <div class="wrap relative z-10">
+
+    <!-- Section header -->
+    <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:clamp(2.5rem,5vw,4rem);">
+      <p class="section-label">Beneficios</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1.5rem;">
+        <h2 style="
+          font-family: var(--font-display);
+          font-weight: 800;
+          font-size: clamp(2rem, 4vw, 3rem);
+          letter-spacing: -0.03em;
+          color: var(--color-ink);
+          max-width: 480px;
+          line-height: 1.1;
+        ">
+          Todo lo que necesitas
+          <span class="text-gradient"> para construir y escalar</span>
+        </h2>
+        <p style="font-size:0.9375rem;color:var(--color-muted);max-width:320px;line-height:1.6;">
+          Un ecosistema completo diseñado para que vayas de la idea al negocio en el menor tiempo posible.
+        </p>
+      </div>
+    </div>
+
+    <!-- Bento grid -->
+    <div
+      style="
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      "
+    >
+      {features.map((f) => (
+        <div
+          class="card-border"
+          style={`
+            grid-column: span ${f.span};
+            padding: clamp(1.5rem, 3vw, 2rem);
+            background: rgba(11, 11, 26, 0.5);
+          `}
+        >
+          <!-- Icon -->
+          <div style={`
+            width: 44px; height: 44px;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 1.25rem;
+            background: ${f.accent}12;
+            border: 1px solid ${f.accent}25;
+            color: ${f.accent};
+          `} set:html={f.icon}></div>
+
+          <!-- Number -->
+          <div style={`
+            font-family: var(--font-mono);
+            font-size: 0.6875rem;
+            letter-spacing: 0.1em;
+            color: ${f.accent}70;
+            margin-bottom: 0.5rem;
+          `}>{f.n}</div>
+
+          <!-- Title -->
+          <h3 style="
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.125rem;
+            letter-spacing: -0.02em;
+            color: var(--color-ink);
+            margin-bottom: 0.625rem;
+          ">{f.title}</h3>
+
+          <!-- Body -->
+          <p style="font-size: 0.9375rem; color: var(--color-muted); line-height: 1.6;">
+            {f.body}
+          </p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* Responsive grid: 1 col on mobile, 2 col on md, 3 col on lg */
+  @media (max-width: 768px) {
+    #beneficios div[style*="grid-template-columns: repeat(3"] {
+      grid-template-columns: 1fr !important;
+    }
+    #beneficios div[style*="grid-column: span 2"] {
+      grid-column: span 1 !important;
+    }
+  }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    #beneficios div[style*="grid-template-columns: repeat(3"] {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
+</style>
